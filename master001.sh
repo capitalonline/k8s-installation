@@ -10,9 +10,6 @@ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-# 安装Flannel网络插件
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-
 # 获取加入集群的token
 echo "Please wait for the master to be fully initialized, then run the join command:"
 sleep 5
