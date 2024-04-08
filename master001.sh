@@ -1,9 +1,15 @@
 #!/bin/bash
 
+# 检查是否传入了pod网络CIDR参数
+if [ -z "$1" ]; then  echo "Usage: $0 --pod-network-cidr=<CIDR>"
+  exit 1
+fi
+
+POD_NETWORK_CIDR=$1
 ./init.sh
 
 # 初始化Kubernetes master节点
-sudo kubeadm init --kubernetes-version=1.29.0 --pod-network-cidr=10.244.0.0/16
+sudo kubeadm init --kubernetes-version=1.29.0 --pod-network-cidr=$POD_NETWORK_CIDR
 
 # 设置kubectl
 mkdir -p $HOME/.kube
