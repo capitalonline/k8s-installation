@@ -1,5 +1,24 @@
 #!/bin/bash
 
+cat <<EOF | sudo tee /etc/apt/sources.list
+deb https://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+ 
+deb https://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+ 
+deb https://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+ 
+# deb https://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+ 
+deb https://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src https://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu focal stable
+EOF
+
+
 # 添加阿里云的APT源
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb http://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
